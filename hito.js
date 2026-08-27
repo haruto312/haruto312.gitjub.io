@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Bing → Hitomi.la 検索
+// @name         Bing → Hitomi.la / Momon-ga 検索
 // @namespace    local
-// @version      1.0
+// @version      1.1
 // @match        https://www.bing.com/search*
 // @run-at       document-start
 // ==/UserScript==
@@ -9,17 +9,17 @@
 (function () {
     'use strict';
 
-    const DOMAIN = '(hitomi.la OR momon-ga.com)';
+    const DOMAIN_QUERY = 'site:hitomi.la OR site:momon-ga.com';
 
     const url = new URL(location.href);
     const query = url.searchParams.get('q');
 
     if (!query) return;
 
-    // 既に site: が付いている場合は変更しない
+    // すでに site: が付いている場合は何もしない
     if (/\bsite:/i.test(query)) return;
 
-    url.searchParams.set('q', `${query} site:${DOMAIN}`);
+    url.searchParams.set('q', `${query} ${DOMAIN_QUERY}`);
 
     location.replace(url.href);
 })();
