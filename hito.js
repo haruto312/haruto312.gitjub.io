@@ -9,7 +9,7 @@
 (function () {
     'use strict';
 
-    const DOMAIN = '(hitomi.la OR momon-ga.com');
+    const DOMAIN = '(hitomi.la OR momon-ga.com)';
 
     const url = new URL(location.href);
     const query = url.searchParams.get('q');
